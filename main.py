@@ -61,14 +61,14 @@ def run_ga(jumlah_generasi, jumlah_populasi, prob_crossover, prob_mutasi, ukuran
         # Membentuk populasi baru
         while len(new_populasi) < jumlah_populasi:
             # Seleksi orang tua menggunakan roulette wheel
-            parent1, idx1 = roulette_wheel_selection(populasi, fitness_populasi)
+            parent1, idx1 = tournament_selection(populasi, fitness_populasi)
             used_indices.append(idx1)
             # Memastikan orang tua kedua berbeda
             available_indices = [i for i in range(len(populasi)) if i not in used_indices]
             if not available_indices:
                 used_indices = [idx1]
                 available_indices = [i for i in range(len(populasi)) if i != idx1]
-            parent2, _ = roulette_wheel_selection([populasi[i] for i in available_indices],[fitness_populasi[i] for i in available_indices])
+            parent2, _ = tournament_selection([populasi[i] for i in available_indices],[fitness_populasi[i] for i in available_indices])
             used_indices.append(available_indices[_])
 
             # Crossover untuk menghasilkan anak
