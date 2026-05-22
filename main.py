@@ -24,13 +24,20 @@ def run_ga(jumlah_generasi, jumlah_populasi, prob_crossover, prob_mutasi, ukuran
 
     # Inisialisasi populasi awal
     populasi = inisialisasi_populasi(jumlah_populasi, jumlah_gen)
+    
     # Menampilkan populasi awal
     print("Populasi Awal:")
     for idx, individu in enumerate(populasi):
         print(f"Individu {idx+1}: {individu}")
-        
+
     # Menghitung fitness untuk setiap individu dalam populasi
     fitness_populasi = [hitung_fitness(individu, barang, ukuran_gudang) for individu in populasi]
+
+    # Menampilkan nilai fitness
+    print("\nNilai Fitness:")
+    for idx, fitness in enumerate(fitness_populasi):
+        print(f"Individu {idx+1}: Fitness = {fitness}")
+
     # List untuk menyimpan nilai fitness terbaik, terburuk, dan rata-rata setiap generasi
     best_fitness_list = []
     worst_fitness_list = []
