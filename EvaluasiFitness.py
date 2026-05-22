@@ -1,4 +1,4 @@
-# Data barang (nama, harga, bobot)
+# Data barang (nama, keuntungan, ukuran)
 barang = [
     ("Barang1", 60, 10),
     ("Barang2", 100, 20),
@@ -7,20 +7,20 @@ barang = [
     ("Barang5", 70, 15)
 ]
 
-kapasitas_tas = 50 # Kapasitas maksimum tas
+ukuran_gudang = 50 # Kapasitas maksimum tas
 
 # Fungsi untuk menghitung nilai fitness
-def hitung_fitness(kromosom, barang, kapasitas_tas):
-    total_harga = 0
-    total_bobot = 0
+def hitung_fitness(kromosom, barang, ukuran_gudang):
+    total_untung = 0
+    total_ukuran = 0
     for i in range(len(kromosom)):
         if kromosom[i] == 1:
-            total_harga += barang[i][1]
-            total_bobot += barang[i][2]
-    if total_bobot > kapasitas_tas:
+            total_untung += barang[i][1]
+            total_ukuran += barang[i][2]
+    if total_ukuran > ukuran_gudang:
             return 0 # Penalti jika melebihi kapasitas
     else:
-        return total_harga
+        return total_untung
     
 # Definisi contoh populasi awal
 populasi_awal = [
@@ -31,7 +31,7 @@ populasi_awal = [
 ]
 
 # Contoh penggunaan
-fitness_populasi = [hitung_fitness(individu, barang, kapasitas_tas) for individu in populasi_awal]
+fitness_populasi = [hitung_fitness(individu, barang, ukuran_gudang) for individu in populasi_awal]
 
 # Menampilkan nilai fitness
 print("\nNilai Fitness:")
