@@ -73,7 +73,7 @@ def run_ga(jumlah_generasi, jumlah_populasi, prob_crossover, prob_mutasi, ukuran
 
             # Crossover untuk menghasilkan anak
             if random.random() < prob_crossover:
-                anak1, anak2 = one_point_crossover(parent1, parent2)
+                anak1, anak2 = two_point_crossover(parent1, parent2)
             else:
                 anak1, anak2 = parent1[:], parent2[:]
 
