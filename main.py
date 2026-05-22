@@ -79,9 +79,9 @@ def run_ga(jumlah_generasi, jumlah_populasi, prob_crossover, prob_mutasi, ukuran
 
             # Mutasi pada anak
             if random.random() < prob_mutasi:
-                anak1 = swap_mutation(anak1)
+                anak1 = inversion_mutation(anak1)
             if random.random() < prob_mutasi:
-                anak2 = swap_mutation(anak2)
+                anak2 = inversion_mutation(anak2)
 
             # Menambahkan anak ke populasi baru
             new_populasi.extend([anak1, anak2])
