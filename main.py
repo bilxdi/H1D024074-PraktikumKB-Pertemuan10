@@ -9,27 +9,23 @@ from selection import roulette_wheel_selection, tournament_selection
 from crossover import one_point_crossover, two_point_crossover, uniform_crossover
 from mutation import swap_mutation, inversion_mutation, uniform_mutation
 
-# Data barang: (nama, nilai, berat)
+# Data barang: (nama, untung, ukuran)
 barang = [
-("Barang1", 60, 10),
-("Barang2", 100, 20),
-("Barang3", 120, 30),
-("Barang4", 90, 25),
-("Barang5", 69, 11),
-("Barang6", 70, 9),
-("Barang7", 80, 15),
-("Barang8", 90, 10),
-("Barang9", 25, 3)
+    ("Barang1", 10, 5),
+    ("Barang2", 40, 4),
+    ("Barang3", 30, 6),
+    ("Barang4", 50, 3),
+    ("Barang5", 35, 7)
 ]
 
-def run_ga(jumlah_generasi, jumlah_populasi, prob_crossover, prob_mutasi, kapasitas_tas):
+def run_ga(jumlah_generasi, jumlah_populasi, prob_crossover, prob_mutasi, ukuran_gudang):
     # Menentukan jumlah gen berdasarkan jumlah barang
     jumlah_gen = len(barang)
 
     # Inisialisasi populasi awal
     populasi = inisialisasi_populasi(jumlah_populasi, jumlah_gen)
     # Menghitung fitness untuk setiap individu dalam populasi
-    fitness_populasi = [hitung_fitness(individu, barang, kapasitas_tas) for individu in populasi]
+    fitness_populasi = [hitung_fitness(individu, barang, ukuran_gudang) for individu in populasi]
     # List untuk menyimpan nilai fitness terbaik, terburuk, dan rata-rata setiap generasi
     best_fitness_list = []
     worst_fitness_list = []
@@ -43,7 +39,7 @@ def run_ga(jumlah_generasi, jumlah_populasi, prob_crossover, prob_mutasi, kapasi
     # Proses evolusi selama jumlah generasi yang ditentukan
     for generasi in range(jumlah_generasi):
         # Evaluasi fitness populasi saat ini
-        fitness_populasi = [hitung_fitness(individu, barang, kapasitas_tas) for individu in populasi]
+        fitness_populasi = [hitung_fitness(individu, barang, ukuran_gudang) for individu in populasi]
         # Menyimpan nilai fitness untuk plotting
         best_fitness = max(fitness_populasi)
         worst_fitness = min(fitness_populasi)
@@ -116,7 +112,7 @@ def run_ga(jumlah_generasi, jumlah_populasi, prob_crossover, prob_mutasi, kapasi
 
     # Menampilkan barang yang terpilih dalam knapsack terbaik
     selected_items = [barang[i][0] for i in range(len(best_individu)) if best_individu[i] == 1]
-    selected_value = hitung_fitness(best_individu, barang, kapasitas_tas)
+    selected_value = hitung_fitness(best_individu, barang, ukuran_gudang)
     selected_weight = sum([barang[i][2] for i in range(len(best_individu)) if best_individu[i] == 1])
 
     print(f"\nNilai Fitness Terbaik: {selected_value}")
@@ -128,8 +124,8 @@ def run_ga(jumlah_generasi, jumlah_populasi, prob_crossover, prob_mutasi, kapasi
 # Menjalankan GA dengan parameter berikut
 run_ga(
     jumlah_generasi=50,
-    jumlah_populasi=20,
+    jumlah_populasi=10,
     prob_crossover=0.5,
     prob_mutasi=0.1,
-    kapasitas_tas=50
+    ukuran_gudang=15
 )
