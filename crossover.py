@@ -32,12 +32,12 @@ def uniform_crossover(parent1, parent2):
             anak2.append(parent1[i])
     return anak1, anak2
 
-# Contoh penggunaan
-parent1 = [1, 0, 1, 1, 0] # Contoh parent1
-parent2 = [0, 1, 0, 0, 1] # Contoh parent2
+# # Contoh penggunaan
+# parent1 = [1, 0, 1, 1, 0] # Contoh parent1
+# parent2 = [0, 1, 0, 0, 1] # Contoh parent2
 
-anak1, anak2 = one_point_crossover(parent1, parent2)
+# anak1, anak2 = one_point_crossover(parent1, parent2)
 
-print("\nAnak Hasil Crossover:")
-print(f"Anak 1: {anak1}")
-print(f"Anak 2: {anak2}")
+# print("\nAnak Hasil Crossover:")
+# print(f"Anak 1: {anak1}")
+# print(f"Anak 2: {anak2}")
