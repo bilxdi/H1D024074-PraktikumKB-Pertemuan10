@@ -122,6 +122,11 @@ def run_ga(jumlah_generasi, jumlah_populasi, prob_crossover, prob_mutasi, ukuran
     plt.grid(True)
     plt.show()
 
+    # Menampilkan populasi generasi 50
+    print("\nPopulasi Generasi 50:")
+    for idx, individu in enumerate(populasi):
+        print(f"Individu {idx+1}: {individu}")
+
     # Menampilkan barang yang terpilih dalam knapsack terbaik
     selected_items = [barang[i][0] for i in range(len(best_individu)) if best_individu[i] == 1]
     selected_value = hitung_fitness(best_individu, barang, ukuran_gudang)
