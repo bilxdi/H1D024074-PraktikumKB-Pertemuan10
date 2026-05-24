@@ -127,6 +127,14 @@ def run_ga(jumlah_generasi, jumlah_populasi, prob_crossover, prob_mutasi, ukuran
     for idx, individu in enumerate(populasi):
         print(f"Individu {idx+1}: {individu}")
 
+    # Hitung fitness terakhir
+    fitness_akhir = [hitung_fitness(individu, barang, ukuran_gudang) for individu in populasi]
+
+    # Menampilkan fitness generasi 50
+    print("\nFitness Generasi 50:")
+    for idx, fitness in enumerate(fitness_akhir):
+        print(f"Individu {idx+1}: Fitness = {fitness}")
+
     # Menampilkan barang yang terpilih dalam knapsack terbaik
     selected_items = [barang[i][0] for i in range(len(best_individu)) if best_individu[i] == 1]
     selected_value = hitung_fitness(best_individu, barang, ukuran_gudang)
